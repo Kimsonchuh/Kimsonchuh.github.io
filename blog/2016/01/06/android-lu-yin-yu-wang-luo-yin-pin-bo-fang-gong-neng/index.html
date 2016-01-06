@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Android Pig</title>
+  <title>Android - 录音与网络音频播放功能 - Android Pig</title>
   <meta name="author" content="Kimson Chuh">
 
   
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Android Pig" type="application/atom+xml">
@@ -64,15 +64,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/">Android - 录音与网络音频播放功能</a></h1>
+      <h1 class="entry-title">Android - 录音与网络音频播放功能</h1>
     
     
       <p class="meta">
@@ -88,7 +85,7 @@
   </header>
 
 
-  <div class="entry-content"><h2>Android - 录音与网络音频播放功能</h2>
+<div class="entry-content"><h2>Android - 录音与网络音频播放功能</h2>
 
 <p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
 首先需要以下3个类：
@@ -1163,457 +1160,52 @@ VoiceRecorder.java</p>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Kimson Chuh</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-01-06T10:03:14+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:03 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2016/01/06/lei-tao-bao-de-nian-zhi-xiao-guo-stickyscrollview/">类淘宝的粘滞效果-StickyScrollView</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-06T10:01:29+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:01 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>类淘宝的粘滞效果-StickyScrollView</h3>
-
-<h4>简介</h4>
-
-<p>对于许多电商的App都在详情页中使用了一种粘滞的效果，这种效果是由淘宝首先发起使用的，后来许多电商争相效仿。之前做的一个水果商城的相关项目中也使用了这种效果，但是当时是参考了别人开源的代码，一个自定义View，<a href="http://www.2cto.com/kf/201408/326934.html">ScrollContainer</a>。该类可以实现类似于淘宝App那种粘滞的效果，但是体验不是很好，所以这里就干脆自己重新编写一个。</p>
-
-<h4>目录结构</h4>
-
-<ul>
-<li>效果描述</li>
-<li>实现思路</li>
-<li>实现代码</li>
-<li>代码分析</li>
-</ul>
-
-
-<h5>效果描述</h5>
-
-<p>如果没有对这种效果了解过，可以打开淘宝或京东的客户端中产品的详情页体验一下。具体效果就是一个页面中，主要分成两部分，这里称为上部分和下部分；用户进入该页面时只显示上部分，下部分只是一个网页，使用webview（此时webview还没有进行加载数据）。当用户滑动上部分到屏幕底部时，会提示向上滑动以查看更具体的详情，当用户向上滑动到距离时，下部分会自动弹到页面顶部并且加载数据。而用户向上滑动小于指定距离时，则会返回原来的位置。而下部分弹回上部分也是同样的原理。</p>
-
-<h5>实现思路</h5>
-
-<p>根据<a href="http://www.2cto.com/kf/201408/326934.html">ScrollContainer</a>的实现思路，该类是继承RelativeLayout，也是有两个子view，上部分是一个ScrollView，下部分是一个webView。当用户滑到ScrollView到底部时，判断是否满足跳转页面的条件，如果满足则记录距离和滑动速度，并触发监听，然后该类进行刷新，重新调用measure和onlayout方法，然后根据之前记录的距离和速度进行刷新页面，从而达到滑动的效果。但是这样做的缺点是用在绘制页面的资源消耗较大，而且对于滑动速度的自定义程度小，所以我重新设计了一个实现方案。我这里实现的思路与上面所述的ScrollContainer基本相同，不同的是使用了scroller滑动类对滑动进行控制，该类可以实现对滑动速度的自定义，给开发者提供了更大的扩展性。</p>
-
-<h5>实现代码</h5>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-<span class='line-number'>145</span>
-<span class='line-number'>146</span>
-<span class='line-number'>147</span>
-<span class='line-number'>148</span>
-<span class='line-number'>149</span>
-<span class='line-number'>150</span>
-<span class='line-number'>151</span>
-<span class='line-number'>152</span>
-<span class='line-number'>153</span>
-<span class='line-number'>154</span>
-<span class='line-number'>155</span>
-<span class='line-number'>156</span>
-<span class='line-number'>157</span>
-<span class='line-number'>158</span>
-<span class='line-number'>159</span>
-<span class='line-number'>160</span>
-<span class='line-number'>161</span>
-<span class='line-number'>162</span>
-<span class='line-number'>163</span>
-<span class='line-number'>164</span>
-<span class='line-number'>165</span>
-<span class='line-number'>166</span>
-<span class='line-number'>167</span>
-<span class='line-number'>168</span>
-<span class='line-number'>169</span>
-<span class='line-number'>170</span>
-<span class='line-number'>171</span>
-<span class='line-number'>172</span>
-<span class='line-number'>173</span>
-<span class='line-number'>174</span>
-<span class='line-number'>175</span>
-<span class='line-number'>176</span>
-<span class='line-number'>177</span>
-<span class='line-number'>178</span>
-<span class='line-number'>179</span>
-<span class='line-number'>180</span>
-<span class='line-number'>181</span>
-<span class='line-number'>182</span>
-<span class='line-number'>183</span>
-<span class='line-number'>184</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StickyScrollView</span> <span class="kd">extends</span> <span class="n">ScrollView</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="n">StickyScrollView</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">();</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">PAGE_TOP</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">PAGE_BOTTOM</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">PERCENT</span> <span class="o">=</span> <span class="mf">0.4</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ANIMATION_DURATION</span> <span class="o">=</span> <span class="mi">180</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">TOUCH_DURATION</span> <span class="o">=</span> <span class="mi">150</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">ViewGroup</span> <span class="n">mChildLayout</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">View</span> <span class="n">mTopChildView</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">Context</span> <span class="n">mContext</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">OnPageChangeListener</span> <span class="n">onPageChangeListener</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isScrollAuto</span><span class="o">;</span>           <span class="c1">//判断是否自由滚动</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">Scroller</span> <span class="n">mScroller</span><span class="o">;</span>             <span class="c1">//滑动类</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">screenHeight</span><span class="o">;</span>               <span class="c1">//屏幕高度</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">offsetDistance</span><span class="o">;</span>             <span class="c1">//topview的高度与屏幕的高度差</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">topChildHeight</span><span class="o">;</span>             <span class="c1">//topview的高度</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isTouch</span><span class="o">;</span>                <span class="c1">//用户是否在触控屏幕</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">currentPage</span><span class="o">;</span>                <span class="c1">//值为0时屏幕显示topview，值为1时屏幕显示bottomview</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">long</span> <span class="n">downTime</span><span class="o">;</span>                  <span class="c1">//用户按下屏幕的时间戳</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">long</span> <span class="n">upTime</span><span class="o">;</span>                    <span class="c1">//用户抬起时的时间戳</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">downY</span><span class="o">;</span>                      <span class="c1">//用户按下屏幕的y坐标</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">upY</span><span class="o">;</span>                        <span class="c1">//用户抬起的y坐标</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isPageChange</span><span class="o">;</span>           <span class="c1">//页面是否切换</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="nf">StickyScrollView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="nf">StickyScrollView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="nf">StickyScrollView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">defStyleAttr</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">,</span> <span class="n">defStyleAttr</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOnPageChangeListener</span><span class="o">(</span><span class="n">OnPageChangeListener</span> <span class="n">onPageChangeListener</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">onPageChangeListener</span> <span class="o">=</span> <span class="n">onPageChangeListener</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onLayout</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">changed</span><span class="o">,</span> <span class="kt">int</span> <span class="n">l</span><span class="o">,</span> <span class="kt">int</span> <span class="n">t</span><span class="o">,</span> <span class="kt">int</span> <span class="n">r</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">.</span><span class="na">onLayout</span><span class="o">(</span><span class="n">changed</span><span class="o">,</span> <span class="n">l</span><span class="o">,</span> <span class="n">t</span><span class="o">,</span> <span class="n">r</span><span class="o">,</span> <span class="n">b</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">mChildLayout</span> <span class="o">=</span> <span class="o">(</span><span class="n">ViewGroup</span><span class="o">)</span> <span class="n">getChildAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">mTopChildView</span> <span class="o">=</span> <span class="n">mChildLayout</span><span class="o">.</span><span class="na">getChildAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">topChildHeight</span> <span class="o">=</span> <span class="n">mTopChildView</span><span class="o">.</span><span class="na">getMeasuredHeight</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">screenHeight</span> <span class="o">=</span> <span class="n">getMeasuredHeight</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">offsetDistance</span> <span class="o">=</span> <span class="n">topChildHeight</span> <span class="o">-</span> <span class="n">screenHeight</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">dispatchTouchEvent</span><span class="o">(</span><span class="n">MotionEvent</span> <span class="n">ev</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">switch</span> <span class="o">(</span><span class="n">ev</span><span class="o">.</span><span class="na">getAction</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_DOWN</span><span class="o">:</span>
-</span><span class='line'>                <span class="n">isTouch</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-</span><span class='line'>                <span class="n">downY</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">ev</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span>
-</span><span class='line'>                <span class="n">downTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">mScroller</span><span class="o">.</span><span class="na">forceFinished</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</span><span class='line'>                    <span class="n">mScroller</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>                <span class="k">break</span><span class="o">;</span>
-</span><span class='line'>            <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_MOVE</span><span class="o">:</span>
-</span><span class='line'>                <span class="k">break</span><span class="o">;</span>
-</span><span class='line'>            <span class="k">case</span> <span class="n">MotionEvent</span><span class="o">.</span><span class="na">ACTION_UP</span><span class="o">:</span>
-</span><span class='line'>                <span class="n">isTouch</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                <span class="n">upY</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">ev</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span>
-</span><span class='line'>                <span class="n">upTime</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-</span><span class='line'>                <span class="c1">//用户手指在屏幕上的时间</span>
-</span><span class='line'>                <span class="kt">long</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">upTime</span> <span class="o">-</span> <span class="n">downTime</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="c1">//这里要确保点击事件不失效</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">upY</span> <span class="o">-</span> <span class="n">downY</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;&gt;&gt;&gt;ISN_T CLICK:&quot;</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">upY</span> <span class="o">-</span> <span class="n">downY</span><span class="o">));</span>
-</span><span class='line'>                    <span class="k">if</span> <span class="o">(</span><span class="n">currentPage</span> <span class="o">==</span> <span class="n">PAGE_TOP</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                        <span class="c1">//下面的判断已经能确定用户是否往上滑</span>
-</span><span class='line'>                        <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">offsetDistance</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                            <span class="n">mScroller</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Scroller</span><span class="o">(</span><span class="n">mContext</span><span class="o">);</span>
-</span><span class='line'>                            <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&lt;</span> <span class="o">(</span><span class="n">screenHeight</span> <span class="o">*</span> <span class="n">PERCENT</span> <span class="o">+</span> <span class="n">offsetDistance</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">duration</span> <span class="o">&gt;</span> <span class="n">TOUCH_DURATION</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                                <span class="n">isPageChange</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_TOP</span><span class="o">);</span>
-</span><span class='line'>                            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span><span class='line'>                                <span class="c1">//切换到下界面</span>
-</span><span class='line'>                                <span class="n">isPageChange</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">isScrollAuto</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">&lt;</span> <span class="n">TOUCH_DURATION</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_BOTTOM</span><span class="o">);</span>
-</span><span class='line'>                                <span class="n">currentPage</span> <span class="o">=</span> <span class="n">PAGE_BOTTOM</span><span class="o">;</span>
-</span><span class='line'>                            <span class="o">}</span>
-</span><span class='line'>                            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                        <span class="o">}</span>
-</span><span class='line'>                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span><span class='line'>                        <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">topChildHeight</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                            <span class="n">mScroller</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Scroller</span><span class="o">(</span><span class="n">mContext</span><span class="o">);</span>
-</span><span class='line'>                            <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&lt;</span> <span class="o">(</span><span class="n">topChildHeight</span> <span class="o">-</span> <span class="n">screenHeight</span> <span class="o">*</span> <span class="n">PERCENT</span><span class="o">)</span> <span class="o">||</span> <span class="n">duration</span> <span class="o">&lt;</span> <span class="n">TOUCH_DURATION</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                                <span class="c1">//切换到上界面</span>
-</span><span class='line'>                                <span class="n">isPageChange</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">isScrollAuto</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">&lt;</span> <span class="n">TOUCH_DURATION</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_TOP</span><span class="o">);</span>
-</span><span class='line'>                                <span class="n">currentPage</span> <span class="o">=</span> <span class="n">PAGE_TOP</span><span class="o">;</span>
-</span><span class='line'>                            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span><span class='line'>                                <span class="n">isPageChange</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                                <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_BOTTOM</span><span class="o">);</span>
-</span><span class='line'>                            <span class="o">}</span>
-</span><span class='line'>                            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-</span><span class='line'>                        <span class="o">}</span>
-</span><span class='line'>                    <span class="o">}</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>                <span class="k">break</span><span class="o">;</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">dispatchTouchEvent</span><span class="o">(</span><span class="n">ev</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="cm">/**</span>
-</span><span class='line'><span class="cm">     * 滚动到指定位置</span>
-</span><span class='line'><span class="cm">     */</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">scrollToTarget</span><span class="o">(</span><span class="kt">int</span> <span class="n">currentPage</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">delta</span><span class="o">;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">currentPage</span> <span class="o">==</span> <span class="n">PAGE_TOP</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="n">delta</span> <span class="o">=</span> <span class="n">getScrollY</span><span class="o">()</span> <span class="o">-</span> <span class="n">offsetDistance</span><span class="o">;</span>
-</span><span class='line'>            <span class="n">mScroller</span><span class="o">.</span><span class="na">startScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">getScrollY</span><span class="o">(),</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="n">delta</span><span class="o">,</span> <span class="n">isScrollAuto</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">?</span> <span class="n">ANIMATION_DURATION</span> <span class="o">:</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">delta</span><span class="o">)</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">));</span>
-</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">currentPage</span> <span class="o">==</span> <span class="n">PAGE_BOTTOM</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="n">delta</span> <span class="o">=</span> <span class="n">getScrollY</span><span class="o">()</span> <span class="o">-</span> <span class="n">topChildHeight</span><span class="o">;</span>
-</span><span class='line'>            <span class="n">mScroller</span><span class="o">.</span><span class="na">startScroll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">getScrollY</span><span class="o">(),</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="n">delta</span><span class="o">,</span> <span class="n">isScrollAuto</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">?</span> <span class="n">ANIMATION_DURATION</span> <span class="o">:</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">delta</span><span class="o">)</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">));</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="n">postInvalidate</span><span class="o">();</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">computeScroll</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="c1">// 调用startScroll的时候scroller.computeScrollOffset()返回true</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">.</span><span class="na">computeScroll</span><span class="o">();</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">return</span><span class="o">;</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span><span class="o">.</span><span class="na">computeScrollOffset</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">scrollTo</span><span class="o">(</span><span class="n">mScroller</span><span class="o">.</span><span class="na">getCurrX</span><span class="o">(),</span> <span class="n">mScroller</span><span class="o">.</span><span class="na">getCurrY</span><span class="o">());</span>
-</span><span class='line'>            <span class="n">postInvalidate</span><span class="o">();</span>
-</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span><span class="o">.</span><span class="na">isFinished</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>                <span class="n">mScroller</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">onPageChangeListener</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">isPageChange</span><span class="o">)</span> <span class="n">onPageChangeListener</span><span class="o">.</span><span class="na">OnPageChange</span><span class="o">(</span><span class="n">currentPage</span><span class="o">);</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onScrollChanged</span><span class="o">(</span><span class="kt">int</span> <span class="n">l</span><span class="o">,</span> <span class="kt">int</span> <span class="n">t</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldl</span><span class="o">,</span> <span class="kt">int</span> <span class="n">oldt</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kd">super</span><span class="o">.</span><span class="na">onScrollChanged</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">t</span><span class="o">,</span> <span class="n">oldl</span><span class="o">,</span> <span class="n">oldt</span><span class="o">);</span>
-</span><span class='line'>        <span class="c1">//滚动时的监听,当用户触屏滑动时不监听，t == getScrollY</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">currentPage</span> <span class="o">==</span> <span class="n">PAGE_TOP</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">offsetDistance</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isTouch</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="c1">//用于控制当滑动到分界线时停止滚动</span>
-</span><span class='line'>                    <span class="n">scrollTo</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">offsetDistance</span><span class="o">);</span>
-</span><span class='line'>                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_TOP</span><span class="o">);</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">currentPage</span> <span class="o">==</span> <span class="n">PAGE_BOTTOM</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">getScrollY</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">topChildHeight</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isTouch</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">mScroller</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">scrollTo</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">topChildHeight</span><span class="o">);</span>
-</span><span class='line'>                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">scrollToTarget</span><span class="o">(</span><span class="n">PAGE_BOTTOM</span><span class="o">);</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="cm">/**</span>
-</span><span class='line'><span class="cm">     * 切换页面完成后的回调</span>
-</span><span class='line'><span class="cm">     */</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OnPageChangeListener</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">void</span> <span class="nf">OnPageChange</span><span class="o">(</span><span class="kt">int</span> <span class="n">currentPage</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>代码分析</h5>
-
-<p>StickyScroll类是继承了ScrollView，一个LinearLayout作为子View，而LinearLayout中包含两个
-代码中主要功能的实现集中在以下几个方法中。
-1. <code>onLayout</code> 复写该方法是为了获取子view中的高度
-2. <code>dispatchTouchEvent</code> 效果实现的主要逻辑。在用户抬起手指时判断滑动到原来的位置或者是切换页面，并且在切换的时候禁用自动滚动，优化体验。 <br/>
-3. <code>scrollToTarget</code> 根据传入的参数启动Scroller，滚动到指定的偏移量。
-4. <code>computeScroll</code> 判断是否已经滚动结束，如果是在切换页面的情况下滚动结束，则调用回调方法，通知页面切换。
-5. <code>onScrollChanged</code> 根据情况是StickyScrollView实现自动滚动或者是滚动到指定的位置。</p>
-
-<h4>总结</h4>
-
-<p>实现StickyScrollView这种具有粘滞效果的自定义主要的难点在于如何计算滑动的距离以及自动滚动。只要把这部分的逻辑实现好了之后，基本功能就实现了，剩下的也就是功能优化的修修补补了。最终的实现效果如下：
-<img src="https://github.com/Kimsonchuh/StickScrollView/blob/master/images/stickyScrollview.gif" alt="" /></p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yoursite.com/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/" data-via="" data-counturl="http://yoursite.com/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/01/06/lei-tao-bao-de-nian-zhi-xiao-guo-stickyscrollview/" title="Previous Post: 类淘宝的粘滞效果-StickyScrollView">&laquo; 类淘宝的粘滞效果-StickyScrollView</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -1637,6 +1229,7 @@ VoiceRecorder.java</p>
 
   
 </aside>
+
 
     </div>
   </div>
