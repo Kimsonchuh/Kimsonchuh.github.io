@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Android Pig]]></title>
   <link href="http://kimsonchuh.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://kimsonchuh.github.io/"/>
-  <updated>2016-01-07T11:20:55+08:00</updated>
+  <updated>2016-01-07T13:44:26+08:00</updated>
   <id>http://kimsonchuh.github.io/</id>
   <author>
     <name><![CDATA[Kimson Chuh]]></name>
@@ -24,82 +24,55 @@
     * VoicePlayManager
     * VoiceRecorder</p>
 
-<p>在项目中使用上类实现的功能是设置两个个button（一个录音，一个播放），用户长按button可以实现录音功能，而当用户松开button时，结束录音。然后用户点击播放按钮可以实现播放的功能。具体实现只使用了以下代码
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">initRecorder</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">String</span> <span class="n">output</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">reply</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;%</span><span class="n">d</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;%</span><span class="n">d</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;,</span> <span class="n">question</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getTimeInMillis</span><span class="o">());</span>
-</span><span class='line'>    <span class="n">mAddVoice</span><span class="o">.</span><span class="na">setOnTouchListener</span><span class="o">(</span><span class="k">new</span> <span class="nf">PressToSpeakListener</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">mRecordStatus</span><span class="o">,</span> <span class="n">output</span><span class="o">,</span> <span class="k">new</span> <span class="n">PressToSpeakListener</span><span class="o">.</span><span class="na">Callback</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="nd">@Override</span>
-</span><span class='line'>        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPressed</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;&gt;&gt;&gt;</span><span class="n">onPressed</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
-</span><span class='line'>        <span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRelease</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;&amp;gt;&amp;gt;&amp;gt;onRelease&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRecorded</span><span class="o">(</span><span class="kt">int</span> <span class="n">length</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;&amp;gt;&amp;gt;&amp;gt;onRecorded&quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">recordTime</span> <span class="o">=</span> <span class="n">length</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConverted</span><span class="o">(</span><span class="n">File</span> <span class="n">output</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;&amp;gt;&amp;gt;&amp;gt;onConverted&quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">recordFile</span> <span class="o">=</span> <span class="n">output</span><span class="o">;</span>
-</span><span class='line'>        <span class="n">mAddVoice</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">GONE</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">mAudioPlayLayout</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span>
-</span><span class='line'>        <span class="c1">//此时实现播放录音的功能</span>
-</span><span class='line'>        <span class="n">mVoicePlay</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>            <span class="nd">@Override</span>
-</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="n">voicePlayManager</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">QuestionDetailActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">recordFile</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">());</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">});</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}));</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>在项目中使用上类实现的功能是设置两个个button（一个录音，一个播放），用户长按button可以实现录音功能，而当用户松开button时，结束录音。然后用户点击播放按钮可以实现播放的功能。具体实现只使用了以下代码</p>
+
+<!-- more -->
+
+
+<p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
+首先需要以下3个类：
+    * PressToSpeakListener
+    * VoicePlayManager
+    * VoiceRecorder</p>
+
+<p>在项目中使用上类实现的功能是设置两个个button（一个录音，一个播放），用户长按button可以实现录音功能，而当用户松开button时，结束录音。然后用户点击播放按钮可以实现播放的功能。具体实现只使用了以下代码</p>
+
+<pre><code class="java">private void initRecorder() {
+    String output = String.format("reply_%d_%d", question.getId(), Calendar.getInstance().getTimeInMillis());
+    mAddVoice.setOnTouchListener(new PressToSpeakListener(this, mRecordStatus, output, new PressToSpeakListener.Callback() {
+        @Override
+        public void onPressed() {
+            Log.e(TAG, "&gt;&gt;&gt;onPressed");
+        }
+
+        @Override
+        public void onRelease() {
+            Log.e(TAG, "&gt;&gt;&gt;onRelease");
+        }
+
+        @Override
+        public void onRecorded(int length) {
+            Log.e(TAG, "&gt;&gt;&gt;onRecorded");
+            recordTime = length;
+        }
+
+        @Override
+        public void onConverted(File output) {
+            Log.e(TAG, "&gt;&gt;&gt;onConverted");
+            recordFile = output;
+            mAddVoice.setVisibility(View.GONE);
+            mAudioPlayLayout.setVisibility(View.VISIBLE);
+            //此时实现播放录音的功能
+            mVoicePlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    voicePlayManager.play(QuestionDetailActivity.this, null, null, recordFile.getAbsolutePath());
+                }
+            });
+        }
+    }));
+}
+</code></pre>
 
 <p>下面给出3个相关类的代码：
 VoiceRecorder.java
@@ -965,6 +938,9 @@ public interface Callback {
     <content type="html"><![CDATA[<h4>简介</h4>
 
 <p>对于许多电商的App都在详情页中使用了一种粘滞的效果，这种效果是由淘宝首先发起使用的，后来许多电商争相效仿。之前做的一个水果商城的相关项目中也使用了这种效果，但是当时是参考了别人开源的代码，一个自定义View，<a href="http://www.2cto.com/kf/201408/326934.html">ScrollContainer</a>。该类可以实现类似于淘宝App那种粘滞的效果，但是体验不是很好，所以这里就干脆自己重新编写一个。</p>
+
+<!-- more -->
+
 
 <h4>目录结构</h4>
 

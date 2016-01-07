@@ -1,84 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://kimsonchuh.github.io/blog/2016/01/07/kuai-men-,guang-quan-yu-ge-chong-pu-guang-mo-shi/</loc>
-    <lastmod>2016-01-07T10:26:05+08:00</lastmod>
-  </url>
-  <url>
     <loc>http://kimsonchuh.github.io/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/</loc>
     <lastmod>2016-01-06T10:03:14+08:00</lastmod>
   </url>
   <url>
     <loc>http://kimsonchuh.github.io/blog/2016/01/06/lei-tao-bao-de-nian-zhi-xiao-guo-stickyscrollview/</loc>
     <lastmod>2016-01-06T10:01:29+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-9/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-8/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-7/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-6/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-5/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-4/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-3/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-2/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-16/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-15/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-14/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-13/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-12/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-11/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-10/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-1/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii/</loc>
-    <lastmod>2014-12-23T08:04:23+08:00</lastmod>
   </url>
   <url>
     <loc>http://kimsonchuh.github.io/archives/</loc>
@@ -96,12 +24,6 @@
     <loc>http://kimsonchuh.github.io/blog/categories/</loc>
   </url>
   <url>
-    <loc>http://kimsonchuh.github.io/blog/categories/sample/</loc>
-  </url>
-  <url>
     <loc>http://kimsonchuh.github.io/blog/categories/android/</loc>
-  </url>
-  <url>
-    <loc>http://kimsonchuh.github.io/posts/2/</loc>
   </url>
 </urlset>
