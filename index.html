@@ -9,8 +9,7 @@
   <meta name="author" content="Kimson Chuh">
 
   
-  <meta name="description" content="Android - 录音与网络音频播放功能 在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
-首先需要以下3个类： * PressToSpeakListener * VoicePlayManager * VoiceRecorder &hellip;">
+  <meta name="description" content="这里关于人像拍摄的时候，一直思考的问题得以解决是在拍人像合照的时候如何聚焦，其实关于合照这种摄影，一般需要的是合照中的人像都处于同一焦平面，人与人之间不需要有景深的效果，所以使用小光圈即可把大合照的人像基本都能可以拍摄清楚。 各种曝光模式： 光圈优先模式（A或Av）：手动定义光圈的大小， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +84,46 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2016/01/07/kuai-men-,guang-quan-yu-ge-chong-pu-guang-mo-shi/">快门，光圈与各种曝光模式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-07T10:26:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:26 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>这里关于人像拍摄的时候，一直思考的问题得以解决是在拍人像合照的时候如何聚焦，其实关于合照这种摄影，一般需要的是合照中的人像都处于同一焦平面，人与人之间不需要有景深的效果，所以使用小光圈即可把大合照的人像基本都能可以拍摄清楚。
+</code></pre>
+
+<p>各种曝光模式：</p>
+
+<ul>
+<li>光圈优先模式（A或Av）：手动定义光圈的大小，然后利用相机的测光获取相应的快门值。由于光圈大小直接影响着景深，因此在平常的拍摄中此模式使用最为广泛。（适合拍静物）光圈数值<code>大于8</code>都可以是小光圈。</li>
+<li>快门优先模式（S或Tv）：手动定义快门的情况下通过相机测光来获取光圈值。快门优先多用于拍摄运动的物体上，特别是在运动拍摄中最常用。很多人在拍摄运动物体时返现，往往拍摄出来的主题模糊，这多半就是因为快门的速度不够快。在这种情况下可以使用快门优先模式，大概确定一个快门值，然后进行拍摄。并且物体的运动一般都是有规律的。那么快门值是可以大概估计的。如拍摄行人的快门速度大概是1/125s, 而拍摄下落的水滴大概为1/1000s。这里有个主意点：当快门设置过高时，如果在过暗的环境下，相机的光圈值会出现闪烁，这是因为相机在高速我们，即使调整到最大的光圈值，也无法达到正确的曝光。（这是佳能相机的形式，如果是尼康则会显示lo值）</li>
+<li>优先模式的曝光补偿：拍摄白色较多的画面时，设置正的曝光补偿；而拍摄黑色等暗色调较多的画面时，设置负的曝光补偿。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/">Android - 录音与网络音频播放功能</a></h1>
     
     
@@ -102,9 +141,7 @@
   </header>
 
 
-  <div class="entry-content"><h2>Android - 录音与网络音频播放功能</h2>
-
-<p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
+  <div class="entry-content"><p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
 首先需要以下3个类：
     * PressToSpeakListener
     * VoicePlayManager
@@ -1205,9 +1242,7 @@ VoiceRecorder.java</p>
   </header>
 
 
-  <div class="entry-content"><h3>类淘宝的粘滞效果-StickyScrollView</h3>
-
-<h4>简介</h4>
+  <div class="entry-content"><h4>简介</h4>
 
 <p>对于许多电商的App都在详情页中使用了一种粘滞的效果，这种效果是由淘宝首先发起使用的，后来许多电商争相效仿。之前做的一个水果商城的相关项目中也使用了这种效果，但是当时是参考了别人开源的代码，一个自定义View，<a href="http://www.2cto.com/kf/201408/326934.html">ScrollContainer</a>。该类可以实现类似于淘宝App那种粘滞的效果，但是体验不是很好，所以这里就干脆自己重新编写一个。</p>
 
@@ -1939,52 +1974,6 @@ hello('World');   // prints 'Hello, World.' to stdout
   
     <footer>
       <a rel="full-article" href="/blog/2014/12/23/of-lorems-and-ipsii-3/">More</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/23/of-lorems-and-ipsii-2/">Of Lorems and Ipsii</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-23T08:04:23+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:04 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-<p>Some code:</p>
-
-<pre><code class="js">var hello = function (name) {
-  console.log("Hello, " + name + '.');
-}
-hello('World');   // prints 'Hello, World.' to stdout
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/23/of-lorems-and-ipsii-2/">More</a>
     </footer>
   
 

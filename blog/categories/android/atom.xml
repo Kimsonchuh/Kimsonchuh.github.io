@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Android Pig]]></title>
   <link href="http://kimsonchuh.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://kimsonchuh.github.io/"/>
-  <updated>2016-01-07T10:23:24+08:00</updated>
+  <updated>2016-01-07T11:20:55+08:00</updated>
   <id>http://kimsonchuh.github.io/</id>
   <author>
     <name><![CDATA[Kimson Chuh]]></name>
@@ -18,9 +18,7 @@
     <link href="http://kimsonchuh.github.io/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng/"/>
     <updated>2016-01-06T10:03:14+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2016/01/06/android-lu-yin-yu-wang-luo-yin-pin-bo-fang-gong-neng</id>
-    <content type="html"><![CDATA[<h2>Android - 录音与网络音频播放功能</h2>
-
-<p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
+    <content type="html"><![CDATA[<p>在美学的项目中，涉及到音频的录制与播放，其功能的实现具体步骤如下。
 首先需要以下3个类：
     * PressToSpeakListener
     * VoicePlayManager
@@ -964,9 +962,7 @@ public interface Callback {
     <link href="http://kimsonchuh.github.io/blog/2016/01/06/lei-tao-bao-de-nian-zhi-xiao-guo-stickyscrollview/"/>
     <updated>2016-01-06T10:01:29+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2016/01/06/lei-tao-bao-de-nian-zhi-xiao-guo-stickyscrollview</id>
-    <content type="html"><![CDATA[<h3>类淘宝的粘滞效果-StickyScrollView</h3>
-
-<h4>简介</h4>
+    <content type="html"><![CDATA[<h4>简介</h4>
 
 <p>对于许多电商的App都在详情页中使用了一种粘滞的效果，这种效果是由淘宝首先发起使用的，后来许多电商争相效仿。之前做的一个水果商城的相关项目中也使用了这种效果，但是当时是参考了别人开源的代码，一个自定义View，<a href="http://www.2cto.com/kf/201408/326934.html">ScrollContainer</a>。该类可以实现类似于淘宝App那种粘滞的效果，但是体验不是很好，所以这里就干脆自己重新编写一个。</p>
 
