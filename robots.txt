@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow:
 
-Sitemap: http://kimsonchuh.github.io/sitemap.xml 
+Sitemap: http://kimsonchuh.github.io/sitemap.xml

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: sample | Android Pig]]></title>
+  <title><![CDATA[Category: Sample | Android Pig]]></title>
   <link href="http://kimsonchuh.github.io/blog/categories/sample/atom.xml" rel="self"/>
   <link href="http://kimsonchuh.github.io/"/>
-  <updated>2016-01-06T22:48:18+08:00</updated>
+  <updated>2016-01-07T10:23:24+08:00</updated>
   <id>http://kimsonchuh.github.io/</id>
   <author>
     <name><![CDATA[Kimson Chuh]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Of lorems and ipsii]]></title>
+    <title type="html"><![CDATA[Of Lorems and Ipsii]]></title>
     <link href="http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-9/"/>
     <updated>2014-12-23T08:04:23+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-9</id>
@@ -63,7 +63,7 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Of lorems and ipsii]]></title>
+    <title type="html"><![CDATA[Of Lorems and Ipsii]]></title>
     <link href="http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-8/"/>
     <updated>2014-12-23T08:04:23+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-8</id>
@@ -112,7 +112,7 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Of lorems and ipsii]]></title>
+    <title type="html"><![CDATA[Of Lorems and Ipsii]]></title>
     <link href="http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-7/"/>
     <updated>2014-12-23T08:04:23+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-7</id>
@@ -161,7 +161,7 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Of lorems and ipsii]]></title>
+    <title type="html"><![CDATA[Of Lorems and Ipsii]]></title>
     <link href="http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-6/"/>
     <updated>2014-12-23T08:04:23+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-6</id>
@@ -210,7 +210,7 @@ no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Of lorems and ipsii]]></title>
+    <title type="html"><![CDATA[Of Lorems and Ipsii]]></title>
     <link href="http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-5/"/>
     <updated>2014-12-23T08:04:23+08:00</updated>
     <id>http://kimsonchuh.github.io/blog/2014/12/23/of-lorems-and-ipsii-5</id>
